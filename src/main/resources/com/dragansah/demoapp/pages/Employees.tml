@@ -1,0 +1,51 @@
+<html t:type="layout" title="Employees"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+
+
+	<t:form>
+		${message:department}:
+		<t:select model="departmentModel" encoder="departmentEncoder"
+			value="department" onchange="this.form.submit()" />
+	</t:form>
+	<p>
+		<t:zone t:id="mainZone" id="mainZone">
+			<t:grid source="employees" t:exclude="id"
+				add="department, view, edit, delete" row="employee">
+
+				<p:departmentCell>${employee.department?.name}</p:departmentCell>
+				<p:salaryCell>
+					<t:zone t:id="salaryZone" id="${salaryZoneId}">
+						${employee.salary}
+					</t:zone>
+
+					<div style="width: 300px">
+						<t:slider zone="prop:salaryZoneId" value="employee.salary"
+							context="employee" min="0" max="20000" step="1000" />
+					</div>
+				</p:salaryCell>
+
+				<p:viewCell>
+					<t:eventLink event="view" zone="editZone" context="employee">view
+					</t:eventLink>
+				</p:viewCell>
+
+				<p:editCell>
+					<t:eventLink event="edit" zone="editZone" context="employee">edit
+					</t:eventLink>
+				</p:editCell>
+
+				<p:deleteCell>
+					<t:eventLink event="delete" zone="editZone" context="employee">delete
+					</t:eventLink>
+				</p:deleteCell>
+			</t:grid>
+		</t:zone>
+	</p>
+
+	<t:zone t:id="editZone" id="editZone"></t:zone>
+
+	<t:block t:id="editBlock">
+		<t:beanEditForm t:id="editEmployee" object="editingEmployee"
+			exclude="id" zone="editZone" />
+	</t:block>
+</html>
