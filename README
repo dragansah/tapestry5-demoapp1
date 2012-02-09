@@ -3,3 +3,9 @@ Tapestry5 Demo Application
 Presented at the Macedonia JUG tech meetup at 08.02.2012
 
 http://jug.mk/events/technical2012/
+
+The demo can be seen live and running here: http://tapestrydemoapp.herokuapp.com/
+
+The demo consists of a single page Employees demonstrating basic CRUD functionality.
+
+Also the demo demonstrates how easy is to make a Tapestry5 custom component. The component is named Slider and wraps the 
