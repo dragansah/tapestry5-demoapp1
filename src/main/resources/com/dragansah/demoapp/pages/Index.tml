@@ -1,42 +1,33 @@
-<html t:type="layout" title="demoapp Index"
-      t:sidebarTitle="Framework Version"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-      xmlns:p="tapestry:parameter">
-        <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+<html t:type="layout" title="demoapp Index" t:sidebarTitle="Framework Version"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+	<!-- Most of the page content, including <head>, <body>, etc. tags, comes 
+		from Layout.tml -->
 
-    <p>${message:greeting}</p>
-
-    <p>The current time is: <strong>${currentTime}</strong></p>
-
-    <!-- A Zone is a component that can be updated in place, triggered by other components. -->
-    <t:zone t:id="zone">
-        <p>
-            You have clicked the link <strong>${clickCount}</strong> times.
-        </p>
-
-        <p>
-            [
-            <t:actionlink t:id="increment">increment</t:actionlink>
-            ]
-            &nbsp;
-            [
-            <t:actionlink t:id="incrementAjax" zone="^">increment (via Ajax)</t:actionlink>
-            ]
-        </p>
-
-    </t:zone>
-
-    <p:sidebar>
-        <p>
-            You are running Tapestry version <strong>${tapestryVersion}</strong>.
-        </p>
-
-
-        <p>
-            [
-            <t:pagelink page="Index">refresh page</t:pagelink>
-            ]
-        </p>
-    </p:sidebar>
+	<p>
+		Hi!
+		<br />
+		This is a
+		<a href="http://tapestry.apache.org">Tapestry5</a>
+		demo web application presented at a
+		<a href="http://jug.mk/events/technical2012/">local meetup of Java Users Group Macedonia (JUGMK).</a>
+	</p>
+	<p>
+		The demo consists of a single page
+		<t:pageLink page="Employees">Employees</t:pageLink>
+		demonstrating basic CRUD functionality.
+	</p>
+	<p>
+		Also the demo demonstrates how easy is to make a Tapestry5 custom
+		component.
+		The component is named
+		<a
+			href="http://github.com/dragansah/tapestry5-demoapp1/blob/master/src/main/java/com/dragansah/demoapp/components/Slider.java">Slider</a>
+		and wraps the
+		<a href="http://jqueryui.com/demos/slider/#steps">JQuery-UI slider component.</a>
+	</p>
+	<p>
+		The code for the demo can be found on github
+		<a href="http://github.com/dragansah/tapestry5-demoapp1">here.</a>
+	</p>
 
 </html>

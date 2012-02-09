@@ -1,6 +1,9 @@
 <html t:type="layout" title="Employees"
 	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
 
+	<p>
+		
+	</p>
 
 	<t:form>
 		${message:department}:
@@ -9,8 +12,8 @@
 	</t:form>
 	<p>
 		<t:zone t:id="mainZone" id="mainZone">
-			<t:grid source="employees" t:exclude="id"
-				add="department, view, edit, delete" row="employee">
+			<t:grid source="employees" t:exclude="id" add="department, edit"
+				row="employee">
 
 				<p:departmentCell>${employee.department?.name}</p:departmentCell>
 				<p:salaryCell>
@@ -24,20 +27,10 @@
 					</div>
 				</p:salaryCell>
 
-				<p:viewCell>
-					<t:eventLink event="view" zone="editZone" context="employee">view
-					</t:eventLink>
-				</p:viewCell>
-
 				<p:editCell>
 					<t:eventLink event="edit" zone="editZone" context="employee">edit
 					</t:eventLink>
 				</p:editCell>
-
-				<p:deleteCell>
-					<t:eventLink event="delete" zone="editZone" context="employee">delete
-					</t:eventLink>
-				</p:deleteCell>
 			</t:grid>
 		</t:zone>
 	</p>
@@ -46,6 +39,12 @@
 
 	<t:block t:id="editBlock">
 		<t:beanEditForm t:id="editEmployee" object="editingEmployee"
-			exclude="id" zone="editZone" />
+			exclude="id" add="department" zone="editZone">
+			<p:department>
+				<t:label for="department" />
+				<t:select model="departmentModel" t:id="department"
+					encoder="departmentEncoder" value="editingEmployee.department" />
+			</p:department>
+		</t:beanEditForm>
 	</t:block>
 </html>
